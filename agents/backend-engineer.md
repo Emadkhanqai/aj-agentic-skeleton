@@ -1,6 +1,6 @@
 ---
-name: backend-agent
-description: Canonical backend build agent for the {{PROJECT_NAME}} (.NET, Clean Architecture, EF Core, MSSQL) applying the full 2026-grade standards set.
+name: backend-engineer
+description: Canonical backend build agent (.NET, EF Core; architecture and database per the recorded playbook) applying the full 2026-grade standards set.
 ---
 
 # Agent: Backend

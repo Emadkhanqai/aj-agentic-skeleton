@@ -1,6 +1,6 @@
 # Standard: TypeScript
 
-**Applies to:** the React frontend and any TS tooling.
+**Applies to:** any TypeScript frontend (Angular default, or React) and TS tooling.
 
 ## Compiler
 
@@ -27,8 +27,8 @@
   source of truth. Generated types live in `src/shared/api/generated/` and are
   produced from the backend OpenAPI/Swagger document.
 - Never edit generated files by hand; regenerate them.
-- See [`api-design.md`](api-design.md) and [`react.md`](react.md).
+- See [`api-design.md`](api-design.md) and the loaded frontend playbook.
 
 ## Related
 
-- [`react.md`](react.md) · [`api-design.md`](api-design.md) · [`testing.md`](testing.md)
+- [`../playbooks/frontend-angular-primeng.md`](../playbooks/frontend-angular-primeng.md) · [`api-design.md`](api-design.md) · [`testing.md`](testing.md)

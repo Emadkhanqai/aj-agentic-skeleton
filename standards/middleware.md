@@ -86,7 +86,7 @@ Add: `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Polic
 - Sanitize or encode free-text fields when displayed/exported (titles, notes, comments,
   vendor text, disclaimers, templates).
 - **Never trust** comments/notes/vendor text. Store raw, encode on output; the frontend also
-  escapes (see [`react.md`](react.md)).
+  escapes (see the loaded frontend playbook).
 
 ## 11. Anti-CSRF Standard
 - **Required if cookie-based auth is used.**

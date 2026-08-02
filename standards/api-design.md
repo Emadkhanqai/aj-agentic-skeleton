@@ -9,7 +9,7 @@ OpenAPI.
   business logic, no domain or EF types.
 - The API's **OpenAPI/Swagger** document is the single source of truth for the
   frontend. The frontend generates its types from it into
-  `src/shared/api/generated/` — **no hand-duplicated models** (see [`react.md`](react.md)).
+  `src/shared/api/generated/` — **no hand-duplicated models** (see the loaded frontend playbook).
 - Swagger UI is enabled at least in Development for frontend sync.
 
 ## Errors — ProblemDetails (RFC 7807)
@@ -45,4 +45,4 @@ OpenAPI.
 
 ## Related
 
-- [`clean-architecture.md`](clean-architecture.md) · [`dotnet.md`](dotnet.md) · [`security.md`](security.md) · [`react.md`](react.md)
+- [`clean-architecture.md`](clean-architecture.md) · [`dotnet.md`](dotnet.md) · [`security.md`](security.md) · [`../playbooks/frontend-angular-primeng.md`](../playbooks/frontend-angular-primeng.md)

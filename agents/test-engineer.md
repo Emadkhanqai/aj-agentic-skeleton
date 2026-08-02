@@ -12,7 +12,7 @@ You ensure behaviour is provable, not assumed.
 - **Backend:** `{{ProjectName}}.UnitTests` (domain/application, no I/O),
   `{{ProjectName}}.IntegrationTests` (Application+Infrastructure on **real MSSQL**, no
   Docker), `{{ProjectName}}.ArchitectureTests` (Clean Architecture boundaries).
-- **Frontend:** Vitest + React Testing Library; `npm run typecheck` as part of the
+- **Frontend:** per the recorded playbook — Jest/Vitest + Testing Library; `npm run typecheck` as part of the
   test surface.
 
 ## Must-cover BRD rules

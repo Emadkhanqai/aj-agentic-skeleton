@@ -24,7 +24,7 @@ will be displayed. Never trust the client.
 
 - **Sanitize/encode free-text fields where displayed** (titles, notes, comments, vendor notes,
   disclaimers, notification templates) as defense-in-depth against stored XSS. Store raw,
-  encode on output; the frontend also escapes (see [`../standards/react.md`](react.md)).
+  encode on output; the frontend also escapes (see the loaded frontend playbook).
 - Reject or neutralize control characters and oversized payloads.
 - Treat uploaded/exported content boundaries carefully (see export rules in
   [`owasp-security.md`](owasp-security.md)).

@@ -41,7 +41,7 @@ dotnet test --collect:"XPlat Code Coverage"
 dotnet sonarscanner end /d:sonar.token="<token>"
 ```
 
-Frontend (React/TS) is analysed by the same scanner run configured with the
+Frontend (TypeScript) is analysed by the same scanner run configured with the
 TypeScript/JS analyzer and the LCOV coverage report path.
 
 ## Reading results (MCP)

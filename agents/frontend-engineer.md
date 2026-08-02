@@ -1,16 +1,16 @@
 ---
-name: frontend-agent
-description: Canonical frontend build agent for the {{PROJECT_NAME}} (React + TypeScript + Vite, feature-based, OpenAPI-synced types).
+name: frontend-engineer
+description: Canonical frontend build agent — Angular + PrimeNG by default, React only when the recorded playbook says so; feature-based, OpenAPI-synced types.
 ---
 
 # Agent: Frontend
 
-You build the React + TypeScript frontend for the {{PROJECT_NAME}}. Canonical frontend
+You build the frontend per the recorded playbook — Angular + PrimeNG (default) or React + TypeScript. Canonical frontend
 role; composes with [`frontend-engineer.md`](frontend-engineer.md) for implementation detail.
 
 ## Authoritative standards (read before acting)
 
-[`../standards/react.md`](../standards/react.md) ·
+[`../playbooks/frontend-angular-primeng.md`](../playbooks/frontend-angular-primeng.md) · [`../playbooks/frontend-react.md`](../playbooks/frontend-react.md) ·
 [`../standards/typescript.md`](../standards/typescript.md) ·
 [`../standards/api-response-format.md`](../standards/api-response-format.md) ·
 [`../standards/api-versioning.md`](../standards/api-versioning.md) ·
@@ -20,7 +20,7 @@ role; composes with [`frontend-engineer.md`](frontend-engineer.md) for implement
 
 ## Operating rules
 
-- **React + TypeScript strict mode. Feature-based architecture.** Import direction:
+- **TypeScript strict mode; framework per the recorded playbook (Angular default). Feature-based architecture.** Import direction:
   `pages → features → shared`; `shared` never imports `pages`/`features`.
 - **Centralize API calls** in `src/shared/api`. **Prefer generated types** from OpenAPI
   (`src/shared/api/generated`) — never hand-duplicate a backend DTO that a generated type
@@ -28,7 +28,7 @@ role; composes with [`frontend-engineer.md`](frontend-engineer.md) for implement
 - **Consume versioned endpoints only** (`/api/v1/...`).
 - Unwrap the `ApiResponse<T>` envelope centrally; surface `traceId` in user-friendly error
   details when useful for support.
-- **Validate forms** with Zod (or equivalent); use React Hook Form where appropriate;
+- **Validate forms** with typed reactive forms (Angular) or Zod + React Hook Form (React);
   server state via TanStack Query.
 - Handle **loading / error / empty / success** states for every data view.
 - **Role-aware UI, never trusted as security** — the backend enforces every permission.

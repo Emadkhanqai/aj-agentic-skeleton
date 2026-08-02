@@ -20,7 +20,7 @@ push.
 
 ## Frontend tests
 
-- Unit/component: Vitest + React Testing Library.
+- Unit/component: Jest/Vitest + Testing Library, per the recorded frontend playbook.
 - Test behaviour and accessibility, not implementation details.
 - Type safety (`npm run typecheck`) is part of the test surface.
 

@@ -20,7 +20,7 @@ Ask, in order. Stop early if answers make the decision obvious.
    deploy/scale today — not "maybe later"?
 6. *(backend/full only)* **Domain complexity?** Heavy business rules and long product life, or
    mostly CRUD over data?
-7. *(frontend/full only)* **Frontend framework?** Angular (default: + PrimeNG) / React.
+7. *(frontend/full only)* **Frontend framework?** Angular + PrimeNG (default). React only if the org explicitly requires it.
 8. *(backend/full only)* **Relational database?** MSSQL/Azure SQL (default) or other. If
    MSSQL → record it; `standards/mssql.md` code-first practices apply to all schema work.
 9. *(backend/full only)* **Will the project use Cosmos DB?** Yes → record it;
