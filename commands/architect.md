@@ -4,7 +4,7 @@ Run in a new or undecided repo. Interviews the user, chooses a playbook, records
 and writes deterministic guardrails into the repo. Run once per project; re-run only for a
 deliberate architecture change (which produces a superseding ADR).
 
-Non-interactive mode for CI/testing: `/architect --scope fullstack --mode monolith --project OrderHub --frontend angular --db mssql --cosmos no`
+Non-interactive mode for CI/testing: `/architect --scope fullstack --mode monolith --project OrderHub --db mssql --cosmos no`
 skips the interview and applies the named playbook directly.
 
 ## Step 1 — Interview (one question at a time)
@@ -20,7 +20,7 @@ Ask, in order. Stop early if answers make the decision obvious.
    deploy/scale today — not "maybe later"?
 6. *(backend/full only)* **Domain complexity?** Heavy business rules and long product life, or
    mostly CRUD over data?
-7. *(frontend/full only)* **Frontend framework?** Angular + PrimeNG (default). React only if the org explicitly requires it.
+7. *(frontend/full only)* **Frontend confirmed as Angular + PrimeNG** (the only supported frontend playbook). Just confirm any UI-specific constraints.
 8. *(backend/full only)* **Relational database?** MSSQL/Azure SQL (default) or other. If
    MSSQL → record it; `standards/mssql.md` code-first practices apply to all schema work.
 9. *(backend/full only)* **Will the project use Cosmos DB?** Yes → record it;

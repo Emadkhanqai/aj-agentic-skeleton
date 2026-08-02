@@ -1,6 +1,6 @@
 # Standard: TypeScript
 
-**Applies to:** any TypeScript frontend (Angular default, or React) and TS tooling.
+**Applies to:** the Angular frontend and any TS tooling.
 
 ## Compiler
 

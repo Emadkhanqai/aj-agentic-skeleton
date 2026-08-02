@@ -2,7 +2,7 @@
 name: fullstack-standards
 description: >
   Engineering standards and architecture derivation for frontend, backend, and full-stack
-  projects — .NET/ASP.NET Core/C#/EF Core on the backend, Angular or React + TypeScript on
+  projects — .NET/ASP.NET Core/C#/EF Core on the backend, Angular + PrimeNG + TypeScript on
   the frontend, MSSQL and/or Cosmos DB for data. Use this skill whenever writing, reviewing,
   refactoring, or architecting code on any of these stacks; when starting a new frontend,
   backend, or full-stack project; when the user asks about project structure, architecture
@@ -32,7 +32,7 @@ Two layers, loaded differently:
 | Scope | Load |
 |---|---|
 | **Backend** or **Full-stack** | ONE backend playbook (table below) + data standards per stack |
-| **Frontend** or **Full-stack** | ONE frontend playbook: [`playbooks/frontend-angular-primeng.md`](playbooks/frontend-angular-primeng.md) or [`playbooks/frontend-react.md`](playbooks/frontend-react.md) |
+| **Frontend** or **Full-stack** | the frontend playbook: [`playbooks/frontend-angular-primeng.md`](playbooks/frontend-angular-primeng.md) |
 | **Frontend-only** | Also read `standards/api-response-format.md` + `standards/api-design.md` — the consumed contract shape |
 
 ## Backend playbook table

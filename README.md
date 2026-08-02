@@ -69,7 +69,7 @@ Agentic coding has a quality problem: give ten developers the same AI tool and y
 9. **Cosmos DB — yes or no?** *(backend/full — "yes" means partition keys get designed in this session, not "later")*
 10. Org constraints (containers, compliance, air-gapped…)
 
-CI / non-interactive: `/architect --scope fullstack --mode monolith --project OrderHub --frontend angular --db mssql --cosmos no`
+CI / non-interactive: `/architect --scope fullstack --mode monolith --project OrderHub --db mssql --cosmos no`
 
 **C. Review the recommendation.** The decision tree proposes a playbook with reasoning (and will push back — e.g. a 4-person team asking for microservices gets a warning and a better alternative). You confirm before anything is written.
 
