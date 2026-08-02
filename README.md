@@ -40,13 +40,45 @@ Agentic coding has a quality problem: give ten developers the same AI tool and y
 
 ## Installation
 
-**As a plugin (recommended):**
+**As a plugin:**
 ```
 /plugin marketplace add Emadkhanqai/aj-agentic-skeleton
-/plugin install fullstack-standards
+/plugin install fullstack-standards@emadkhanpro
 ```
 
-**Manual:** clone this repo into `~/.claude/skills/fullstack-standards/` (global) or your repo's `.claude/skills/fullstack-standards/` (per-project).
+> **Updates are not automatic by default.** Claude Code auto-updates official Anthropic
+> marketplaces out of the box, but third-party marketplaces (this one included) ship with
+> auto-update **off**. To get new versions without thinking about it, enable it once:
+> `/plugin` → **Marketplaces** tab → `emadkhanpro` → **Enable auto-update**. Once on, Claude
+> Code checks in the background after each session start and updates on disk automatically —
+> you'll see a prompt to `/reload-plugins`, or the new version just loads next launch. Without
+> that toggle, re-run the two commands above whenever you want the latest.
+
+**Manual (clone into the global skills folder):**
+
+macOS / Linux / WSL:
+```bash
+git clone https://github.com/Emadkhanqai/aj-agentic-skeleton.git ~/.claude/skills/fullstack-standards
+```
+
+Windows (PowerShell, native — not WSL):
+```powershell
+git clone https://github.com/Emadkhanqai/aj-agentic-skeleton.git $env:USERPROFILE\.claude\skills\fullstack-standards
+```
+
+Or clone into a specific repo's `.claude/skills/fullstack-standards/` instead of the global folder, to scope the skill to one project.
+
+**Manual installs never auto-update — check periodically:**
+
+macOS / Linux / WSL:
+```bash
+cd ~/.claude/skills/fullstack-standards && git pull
+```
+
+Windows (PowerShell):
+```powershell
+cd $env:USERPROFILE\.claude\skills\fullstack-standards; git pull
+```
 
 **Prerequisites for the full quality gate:** a SonarQube instance (self-hosted Community Edition or SonarCloud) with the SonarQube MCP configured in Claude Code — `/pre-push` reads the quality-gate status through it. No SonarQube yet? The gate degrades gracefully: build, tests, and architecture tests still block; wire Sonar in when ready.
 
@@ -73,11 +105,12 @@ CI / non-interactive: `/architect --scope fullstack --mode monolith --project Or
 
 **C. Review the recommendation.** The decision tree proposes a playbook with reasoning (and will push back — e.g. a 4-person team asking for microservices gets a warning and a better alternative). You confirm before anything is written.
 
-**D. Watch the walls go up.** `/architect` writes into your repo:
+**D. Watch the walls go up.** `/architect` runs `git init` (if needed), then writes into your repo:
 - `docs/adr/0001-architecture-choice.md` — the decision and why
 - `project-constraints.md` — *your* org's rules (e.g. "MSSQL only"), clearly separated from universal standards
 - `CLAUDE.md` — project summary, recorded scope + playbook + data stores, commands
-- `Directory.Build.props`, `.claude/settings.json` + hooks, and `tests/<Project>.ArchitectureTests/` matching your playbook (backend scopes) / ESLint + Prettier + strict tsconfig + `DESIGN.md` stub (frontend scopes)
+- `Directory.Build.props`, `.claude/settings.json` + hooks, `.claude/approved-packages.txt` (pre-seeded for your playbooks), and `tests/<Project>.ArchitectureTests/` matching your playbook (backend scopes) / ESLint + Prettier + strict tsconfig + `DESIGN.md` stub (frontend scopes)
+- **`.git/hooks/pre-push`** — the native, deterministic gate: build/lint/test (+ SonarQube if configured) run on every push, automatically, with no AI in the loop and no command to remember
 
 **E. Verify.** The command ends by building and running the architecture tests, showing you green output. If it's red, it fixes before declaring the repo initialized.
 

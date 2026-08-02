@@ -16,7 +16,10 @@ choice, container policy, cloud) live in the repo's `project-constraints.md`, ge
 4. **Classify the task and recommend the cheapest fitting model first.** See
    `model-routing.md`. If the current model outclasses the work, STOP and tell the user.
 5. **Evidence or it didn't happen.** "Done" requires proof: test output, build log, or a
-   verified run. Claims without evidence are treated as not done.
+   verified run. Claims without evidence are treated as not done. **Name every gate that ran** —
+   "all green" without listing build/lint/test/SonarQube by name is itself a violation; if a
+   configured gate (e.g. SonarQube) wasn't run, say so explicitly rather than let "green" imply
+   it was.
 6. **Two-strike rule.** Same fix failed twice → stop, `/clear`, re-approach with better
    context or a smaller task. Never thrash.
 7. **No new dependencies without explicit human approval** in that session. Hallucinated or

@@ -65,6 +65,9 @@ State the recommendation and reasoning, get explicit user confirmation before wr
 
 ## Step 3 — Write the decision into the repo
 
+**Step 3.0 — Git.** If `.git` does not exist, run `git init` now — nothing below can be
+committed without it, and discovering this gap at push time (instead of now) wastes a session.
+
 In this exact order:
 
 1. **`docs/adr/0001-architecture-choice.md`** — from `templates/adr.md`: the decision, the
@@ -89,7 +92,16 @@ In this exact order:
    - `Directory.Build.props` ← `enforcement/Directory.Build.props`
    - `.claude/settings.json` ← `enforcement/settings.template.json` (hooks wired)
    - `.claude/hooks/*` ← `enforcement/hooks/`
-   - `.claude/approved-packages.txt` — created empty; the HUMAN lists approved dependency names here (one per line); hooks enforce it and protect it from agent edits
+   - `.claude/approved-packages.txt` — pre-seeded with trusted scope wildcards for the
+     CHOSEN playbooks (reduces day-one friction; still human-editable, still agent-write-protected):
+     - Angular+PrimeNG chosen → `@angular/*`, `@primeng/*`, `@primeuix/*`, `primeng`, `primeicons`,
+       `@angular-eslint/*`, `@typescript-eslint/*`, `eslint*`, `prettier*`, `typescript`, `rxjs`, `zone.js`
+     - .NET backend chosen → `Microsoft.*`, `System.*`, `xunit*`, `Moq`, `FluentAssertions`, `NetArchTest.Rules`
+     The human adds anything else the project needs; unlisted third-party packages still gate normally.
+   - **`enforcement/git-hooks/pre-push` → `.git/hooks/pre-push`** (run
+     `enforcement/git-hooks/install-git-hooks.sh`, `chmod +x`). This is the DETERMINISTIC gate —
+     it runs on every `git push` with no AI in the loop, so the full quality gate (build, lint,
+     test, and SonarQube if configured) can never be silently skipped or forgotten.
    - *(backend/full)* `tests/{{ProjectName}}.ArchitectureTests/` ← the architecture-test
      template matching the chosen playbook from `enforcement/architecture-tests/`, tokens
      replaced. Deviation fails the build.
@@ -100,5 +112,12 @@ In this exact order:
 ## Step 4 — Prove it
 
 Run the build and the architecture tests. Show the user the green output. If anything is red,
-fix it before declaring the repo initialized. End with a one-screen summary: chosen playbook,
-files written, and the single command that runs the full local gate.
+fix it before declaring the repo initialized. Make an initial commit (`git add -A && git commit
+-m "chore: initial scaffold"`) so the native pre-push hook has something to guard. End with a
+one-screen summary: chosen playbook, files written, and the single command that runs the full
+local gate.
+
+**Naming the gate matters.** Never declare "green" or "done" without naming exactly which
+checks ran (build / lint / test / architecture-tests / SonarQube). If SonarQube isn't
+configured, say so explicitly — "SonarQube not run" is not the same as "gate passed" (see
+`invariants.md`).
