@@ -1,0 +1,37 @@
+// tests/{{ProjectName}}.ArchitectureTests — Modular Monolith rules (NetArchTest.Rules + xUnit)
+using NetArchTest.Rules;
+
+namespace {{ProjectName}}.ArchitectureTests;
+
+public class ModuleBoundaryTests
+{
+    // One test per module pair: modules may reference each other's Contracts ONLY.
+    [Theory]
+    [InlineData("{{ProjectName}}.Orders", "{{ProjectName}}.Catalog")]
+    public void Modules_Reference_Only_Contracts(string moduleA, string moduleB)
+    {
+        var result = Types.InAssemblyNames($"{moduleA}.Domain", $"{moduleA}.Application", $"{moduleA}.Infrastructure")
+            .ShouldNot().HaveDependencyOnAny($"{moduleB}.Domain", $"{moduleB}.Application", $"{moduleB}.Infrastructure")
+            .GetResult();
+        Assert.True(result.IsSuccessful, string.Join(", ", result.FailingTypeNames ?? []));
+    }
+
+    [Fact]
+    public void Domain_Is_Pure() // no EF Core, no ASP.NET in any Domain project
+    {
+        var result = Types.InCurrentDomain()
+            .That().ResideInNamespaceMatching(@".*\.Domain($|\..*)")
+            .ShouldNot().HaveDependencyOnAny("Microsoft.EntityFrameworkCore", "Microsoft.AspNetCore")
+            .GetResult();
+        Assert.True(result.IsSuccessful, string.Join(", ", result.FailingTypeNames ?? []));
+    }
+
+    [Fact]
+    public void SharedKernel_Depends_On_Nothing_Module_Specific()
+    {
+        var result = Types.InAssemblyName("{{ProjectName}}.SharedKernel")
+            .ShouldNot().HaveDependencyOnAny("{{ProjectName}}.Orders", "{{ProjectName}}.Catalog")
+            .GetResult();
+        Assert.True(result.IsSuccessful);
+    }
+}

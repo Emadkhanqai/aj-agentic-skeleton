@@ -1,0 +1,11 @@
+{
+  "name": "emadkhanpro",
+  "owner": { "name": "Emad Khan", "url": "https://emadkhan.pro" },
+  "plugins": [
+    {
+      "name": "fullstack-standards",
+      "source": ".",
+      "description": "Engineering standards + /architect derivation + deterministic enforcement for .NET, Angular/React, MSSQL, and Cosmos DB projects."
+    }
+  ]
+}

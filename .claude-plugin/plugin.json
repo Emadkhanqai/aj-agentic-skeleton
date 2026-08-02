@@ -1,0 +1,6 @@
+{
+  "name": "fullstack-standards",
+  "description": "Portable engineering brain for AI-first frontend, backend, and full-stack teams (.NET, Angular/React, MSSQL, Cosmos DB). Derives architecture per project via /architect, then enforces it with build props, hooks, and architecture tests.",
+  "version": "1.0.0",
+  "author": { "name": "Emad Khan", "url": "https://emadkhan.pro" }
+}

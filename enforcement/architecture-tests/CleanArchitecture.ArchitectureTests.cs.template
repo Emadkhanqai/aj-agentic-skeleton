@@ -1,0 +1,37 @@
+// tests/{{ProjectName}}.ArchitectureTests — Clean Architecture layering (NetArchTest.Rules + xUnit)
+using NetArchTest.Rules;
+
+namespace {{ProjectName}}.ArchitectureTests;
+
+public class LayeringTests
+{
+    [Fact]
+    public void Domain_References_Nothing_Outward()
+    {
+        var result = Types.InAssemblyName("{{ProjectName}}.Domain")
+            .ShouldNot().HaveDependencyOnAny(
+                "{{ProjectName}}.Application", "{{ProjectName}}.Infrastructure", "{{ProjectName}}.Api",
+                "Microsoft.EntityFrameworkCore", "Microsoft.AspNetCore")
+            .GetResult();
+        Assert.True(result.IsSuccessful, string.Join(", ", result.FailingTypeNames ?? []));
+    }
+
+    [Fact]
+    public void Application_Does_Not_Reference_Infrastructure_Or_Api()
+    {
+        var result = Types.InAssemblyName("{{ProjectName}}.Application")
+            .ShouldNot().HaveDependencyOnAny("{{ProjectName}}.Infrastructure", "{{ProjectName}}.Api")
+            .GetResult();
+        Assert.True(result.IsSuccessful, string.Join(", ", result.FailingTypeNames ?? []));
+    }
+
+    [Fact]
+    public void Controllers_Do_Not_Touch_DbContext()
+    {
+        var result = Types.InAssemblyName("{{ProjectName}}.Api")
+            .That().HaveNameEndingWith("Controller")
+            .ShouldNot().HaveDependencyOn("Microsoft.EntityFrameworkCore")
+            .GetResult();
+        Assert.True(result.IsSuccessful, string.Join(", ", result.FailingTypeNames ?? []));
+    }
+}
