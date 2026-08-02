@@ -2,7 +2,7 @@
 
 **A portable engineering brain for AI-first development** — install it as a Claude Code skill, and every project your team (or your AI agent) builds follows the same senior-grade standards: frontend, backend, or full-stack.
 
-Backend: **.NET / ASP.NET Core / C# / EF Core** · Frontend: **Angular + PrimeNG** or **React + TypeScript** · Data: **SQL Server (code-first)** and/or **Azure Cosmos DB** · Agent: **Claude Code**
+Backend: **.NET / ASP.NET Core / C# / EF Core** · Frontend: **Angular + PrimeNG** · Data: **SQL Server (code-first)** and/or **Azure Cosmos DB** · Agent: **Claude Code**
 
 > The core idea in one line: **derive the architecture once per project, then enforce it forever** — advisory markdown for judgment, deterministic guardrails (build props, hooks, architecture tests) for everything an agent or a rushed human could forget.
 
@@ -21,7 +21,7 @@ Agentic coding has a quality problem: give ten developers the same AI tool and y
 | Layer | What it does |
 |---|---|
 | **`invariants.md`** | 20 non-negotiable rules that hold in *every* project regardless of architecture — always loaded. Push-approval policy, quality gates, one `ApiResponse<T>` envelope, entities never over the wire, evidence-or-it-didn't-happen, dependency-approval gate, and more. |
-| **`playbooks/`** | Architecture-specific guidance, loaded one at a time: modular monolith (default), clean architecture, microservices (with anti-rules), minimal API, Angular + PrimeNG, React + TypeScript. |
+| **`playbooks/`** | Architecture-specific guidance, loaded one at a time: modular monolith (default), clean architecture, microservices (with anti-rules), minimal API, Angular + PrimeNG. |
 | **`commands/architect.md`** | The `/architect` interview: scope (frontend / backend / full-stack), team, domain, databases → picks the playbook, writes the ADR, generates the repo's `CLAUDE.md` and `project-constraints.md`, then **writes the enforcement files**. |
 | **`enforcement/`** | The walls: `Directory.Build.props` (warnings-as-errors + analyzers, no opt-out), Claude Code hooks (dangerous-command blocker, dependency-approval gate, protected-file guard, auto-format), and **NetArchTest architecture-test templates** per playbook. |
 | **`standards/`** | Topic deep-dives loaded per task: API design/versioning/envelope, error handling & middleware order, EF Core & migrations, **MSSQL code-first pro practices**, **Cosmos DB rules** (conditional — loaded only if the project uses Cosmos), OWASP-aligned security, observability, SonarQube gating. |
@@ -64,7 +64,7 @@ Agentic coding has a quality problem: give ten developers the same AI tool and y
 4. Team size & seniority
 5. One deployable or many? *(backend/full)*
 6. Domain complexity? *(backend/full)*
-7. Frontend framework — Angular (default: + PrimeNG) or React *(frontend/full)*
+7. Frontend confirmed — Angular + PrimeNG (the sole frontend playbook) *(frontend/full)*
 8. Relational DB — MSSQL/Azure SQL? *(backend/full)*
 9. **Cosmos DB — yes or no?** *(backend/full — "yes" means partition keys get designed in this session, not "later")*
 10. Org constraints (containers, compliance, air-gapped…)
@@ -92,7 +92,7 @@ CI / non-interactive: `/architect --scope fullstack --mode monolith --project Or
 ```
 ├── SKILL.md              # Router: invariants always, playbooks on demand, scope-first
 ├── invariants.md         # The 20 non-negotiables
-├── playbooks/            # monolith · clean-arch · microservices · minimal-api · angular · react
+├── playbooks/            # monolith · clean-arch · microservices · minimal-api · angular-primeng
 ├── commands/             # /architect · /implement · /review · /pre-push · /quality-gate …
 ├── enforcement/          # Build props · hooks · settings template · NetArchTest templates
 ├── standards/            # API · errors · EF Core · MSSQL · Cosmos DB · security · testing …
