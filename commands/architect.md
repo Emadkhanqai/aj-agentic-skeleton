@@ -89,6 +89,7 @@ In this exact order:
    - `Directory.Build.props` ← `enforcement/Directory.Build.props`
    - `.claude/settings.json` ← `enforcement/settings.template.json` (hooks wired)
    - `.claude/hooks/*` ← `enforcement/hooks/`
+   - `.claude/approved-packages.txt` — created empty; the HUMAN lists approved dependency names here (one per line); hooks enforce it and protect it from agent edits
    - *(backend/full)* `tests/{{ProjectName}}.ArchitectureTests/` ← the architecture-test
      template matching the chosen playbook from `enforcement/architecture-tests/`, tokens
      replaced. Deviation fails the build.
