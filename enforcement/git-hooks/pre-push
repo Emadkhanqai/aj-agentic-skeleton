@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# Native git pre-push hook — installed by /architect (or manually via install-git-hooks.sh).
+# Runs the mandatory quality gate before allowing any push. Deterministic; no AI in the loop.
+# Bypass only with: git push --no-verify (leaves an audit trail in shell history — don't hide it).
+
+set -e
+cd "$(git rev-parse --show-toplevel)"
+FRONTEND_DIR="."; [ -d "frontend" ] && FRONTEND_DIR="frontend"
+BACKEND_DIR="."; [ -d "backend" ] && BACKEND_DIR="backend"
+FAIL=0
+
+echo "── pre-push gate ──────────────────────────────"
+
+# Backend (skip if no .sln / .csproj present)
+if ls "$BACKEND_DIR"/*.sln >/dev/null 2>&1 || find "$BACKEND_DIR" -maxdepth 2 -name '*.csproj' | grep -q .; then
+  echo "→ dotnet build"
+  (cd "$BACKEND_DIR" && dotnet build --no-incremental) || { echo "✗ backend build failed"; FAIL=1; }
+  echo "→ dotnet test"
+  (cd "$BACKEND_DIR" && dotnet test) || { echo "✗ backend tests failed"; FAIL=1; }
+fi
+
+# Frontend (skip if no package.json)
+if [ -f "$FRONTEND_DIR/package.json" ]; then
+  echo "→ npm run lint"
+  (cd "$FRONTEND_DIR" && npm run lint) || { echo "✗ frontend lint failed"; FAIL=1; }
+  echo "→ npm run build"
+  (cd "$FRONTEND_DIR" && npm run build) || { echo "✗ frontend build failed"; FAIL=1; }
+  echo "→ npm test"
+  (cd "$FRONTEND_DIR" && npm test) || { echo "✗ frontend tests failed"; FAIL=1; }
+fi
+
+# SonarQube — only if configured; otherwise warn, don't silently skip
+if [ -f "sonar-project.properties" ] && command -v sonar-scanner >/dev/null 2>&1; then
+  echo "→ sonar-scanner"
+  sonar-scanner || { echo "✗ SonarQube scan failed to run"; FAIL=1; }
+  echo "⚠ Scan submitted — quality gate status (Blocker/Critical/Major) must be checked"
+  echo "  manually or via the SonarQube MCP before this push is truly clear."
+else
+  echo "⚠ SonarQube not configured (no sonar-project.properties / scanner) — SKIPPED, not passed."
+  echo "  Per invariants.md, this push has NOT cleared the full gate. Proceed only if you"
+  echo "  accept that gap for this repo (e.g. early-stage project)."
+fi
+
+echo "────────────────────────────────────────────────"
+if [ "$FAIL" = "1" ]; then
+  echo "❌ Pre-push gate FAILED. Push blocked. Fix the above, or use 'git push --no-verify' to override (not recommended)."
+  exit 1
+fi
+echo "✅ Pre-push gate passed (see SonarQube note above if it wasn't configured)."
+exit 0
