@@ -28,5 +28,5 @@ dotnet ef migrations script --idempotent \
   --output database/migrations/<PascalCaseName>.sql
 ```
 
-MSSQL only · migration-based · no `EnsureCreated` · no Docker.
+Database per `project-constraints.md` · migration-based · no `EnsureCreated`.
 ```

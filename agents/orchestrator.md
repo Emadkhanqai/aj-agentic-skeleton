@@ -28,7 +28,7 @@ pre-push quality gate. You do not push.
 
 ## Non-negotiable rules (enforce on every task)
 
-1. **No Docker.** 2. **MSSQL only.** 3. **EF Core migration-based.**
+1. **Honor `project-constraints.md`** (containers, database choice). 2. **EF Core migration-based.**
 4. **Never push without explicit user approval** (per-push). 5. **SonarQube runs before every
    push.** 6. **Blocker/Critical/Major must be zero before push.**
 

@@ -19,7 +19,7 @@ What changed and why (link the BRD section / issue).
 ## Architecture & standards
 - [ ] Clean Architecture boundaries respected
 - [ ] Frontend import direction respected
-- [ ] No Docker · MSSQL only · no hand-duplicated DTOs
+- [ ] `project-constraints.md` honored · no hand-duplicated DTOs
 
 ## Security
 - [ ] Price-list raw values not exposed to disallowed roles (test present)

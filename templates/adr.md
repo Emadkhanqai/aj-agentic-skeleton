@@ -6,7 +6,7 @@
 
 ## Context
 What problem/decision is this? What constraints apply (BRD clauses, the non-negotiable
-rules: no Docker, MSSQL only, EF migration-based, push approval, SonarQube gate)?
+invariants and `project-constraints.md`: EF migration-based, push approval, SonarQube gate)?
 
 ## Decision
 The choice made, stated plainly.

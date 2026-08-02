@@ -46,9 +46,9 @@ and enforced by `{{ProjectName}}.ArchitectureTests`.
   `appsettings.{Environment}.json` and environment variables.
 - **No secrets in source.** Locally use `dotnet user-secrets`; in Azure use Key Vault
   + workload/service identities (see [`gcp.md`](gcp.md)).
-- Connection strings target **MSSQL only** (see [`mssql.md`](mssql.md)).
+- Connection strings target the recorded relational store (MSSQL default — see [`mssql.md`](mssql.md)).
 
-## Build & test commands (native — no Docker)
+## Build & test commands
 
 ```bash
 dotnet restore

@@ -18,7 +18,7 @@ You review diffs against the project standards and block anything that violates 
 4. **Security** — price-list raw-value leakage, server-side authorization, secrets,
    input validation, ProblemDetails without stack-trace leaks.
 5. **Tests** — new/changed behaviour is covered; architecture tests updated.
-6. **No forbidden patterns** — no Docker, no non-MSSQL provider, no `EnsureCreated`,
+6. **No forbidden patterns** — nothing `project-constraints.md` forbids, no `EnsureCreated`,
    no hand-duplicated DTOs when generated types exist.
 
 ## Output

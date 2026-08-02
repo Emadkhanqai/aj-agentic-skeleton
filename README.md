@@ -48,6 +48,8 @@ Agentic coding has a quality problem: give ten developers the same AI tool and y
 
 **Manual:** clone this repo into `~/.claude/skills/fullstack-standards/` (global) or your repo's `.claude/skills/fullstack-standards/` (per-project).
 
+**Prerequisites for the full quality gate:** a SonarQube instance (self-hosted Community Edition or SonarCloud) with the SonarQube MCP configured in Claude Code — `/pre-push` reads the quality-gate status through it. No SonarQube yet? The gate degrades gracefully: build, tests, and architecture tests still block; wire Sonar in when ready.
+
 ## Usage — A to Z
 
 **A. Start a project.** Create an empty repo, open Claude Code in it, and run:

@@ -13,7 +13,7 @@ Run the full pre-push quality gate and report. **This command never pushes.**
 3. `dotnet build --no-incremental` (zero errors).
 4. `dotnet test` (unit + integration + architecture).
 5. In `/frontend`: `npm run typecheck` then `npm run build`.
-6. Run the **SonarQube scanner** (native, no Docker) and read results via the
+6. Run the **SonarQube scanner** (runner per `project-constraints.md`) and read results via the
    SonarQube MCP: `get_project_quality_gate_status` and
    `search_sonar_issues_in_projects` filtered to `BLOCKER,CRITICAL,MAJOR`.
 

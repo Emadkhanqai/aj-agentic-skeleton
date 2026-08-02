@@ -6,7 +6,7 @@ Shipping a change to an environment. Nothing here bypasses the approval or Sonar
 
 ## 0. Preconditions
 - Feature/API/DB workflows complete; branch is up to date.
-- All non-negotiable rules satisfied (No Docker, MSSQL, migration-based, approval, Sonar gate).
+- All invariants + `project-constraints.md` satisfied (migration-based, approval, Sonar gate).
 
 ## 1. Full verification
 ```
@@ -31,7 +31,7 @@ npm run build
   DBA-reviewed. Optionally enable maintenance mode during the migration
   ([`../standards/middleware.md`](../standards/middleware.md) §19).
 
-## 4. Deploy (Azure, no Docker)
+## 4. Deploy (per `project-constraints.md`)
 - Backend → Azure App Service; frontend → Static Web Apps/App Service; DB → Azure SQL.
 - Secrets from Key Vault/App Settings via Managed Identity. Environment-specific config for
   Development/Staging/Production ([`../standards/gcp.md`](../standards/gcp.md)).

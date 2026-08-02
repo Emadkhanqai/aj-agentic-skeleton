@@ -10,7 +10,7 @@
    and only by migrations.
 4. **MSSQL provider only** (`Microsoft.EntityFrameworkCore.SqlServer`). No other
    provider in production code paths.
-5. **No Docker** for the database. Use a native/local SQL Server or Azure SQL.
+5. **Database environment per `project-constraints.md`** (local instance, container, or Azure SQL).
 
 ## Where things live
 

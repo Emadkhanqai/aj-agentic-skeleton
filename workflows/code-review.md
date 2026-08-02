@@ -25,7 +25,7 @@ Run before proposing a push, after the build/test gate, alongside SonarQube.
 - [ ] Server-side authz; secrets absent; ProblemDetails without internal leaks.
 
 **Forbidden patterns**
-- [ ] No Docker. No non-MSSQL provider. No `EnsureCreated`/manual DDL.
+- [ ] `project-constraints.md` honored (containers, DB provider). No `EnsureCreated`/manual DDL.
 - [ ] No hand-duplicated DTOs where generated types exist.
 
 **Tests**

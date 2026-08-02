@@ -29,7 +29,7 @@ Blocker/Critical/Major findings **block** the push.
 
 ## Running the scanner
 
-> Native execution only — **no Docker** (see rule 1 of the system). Use the
+> Execution environment per **`project-constraints.md`**. Use the
 > installed `dotnet-sonarscanner` / `sonar-scanner` CLI or the SonarQube MCP tools.
 
 Typical .NET flow (native):

@@ -2,7 +2,7 @@
 
 > **Model routing (do first):** classify the task and recommend a model — see [`../model-routing.md`](../model-routing.md). Final review judgement → **Opus/Fable**; the SonarQube *fixes* it produces → **Sonnet**. Warn the user if the current model is too expensive before continuing.
 
-**Mandatory before every push.** Native tooling only — **no Docker**.
+**Mandatory before every push.** Tooling/runner per **`project-constraints.md`**.
 
 ## Steps (stop and fix on first hard failure)
 

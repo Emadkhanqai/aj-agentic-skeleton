@@ -1,5 +1,5 @@
 ---
-description: Create, review, apply, and script an EF Core migration (MSSQL, migration-based, no Docker).
+description: Create, review, apply, and script an EF Core migration (migration-based, per project constraints).
 ---
 
 # /new-migration <PascalCaseName>
@@ -21,5 +21,5 @@ Create an EF Core migration following the standard.
 5. Script it: `dotnet ef migrations script --idempotent ... --output database/migrations/<PascalCaseName>.sql`.
 6. Commit migration + snapshot + SQL together. **Do not push without approval.**
 
-Rules: MSSQL only · no `EnsureCreated` · no manual DDL · no Docker.
+Rules: database per `project-constraints.md` · no `EnsureCreated` · no manual DDL.
 See [`../workflows/ef-core-migration.md`](../workflows/ef-core-migration.md).

@@ -63,7 +63,7 @@ Dependencies point **inward only**. Nothing inner knows about anything outer.
 - Controllers are thin: validate input shape, dispatch to Application, map result to
   a Contracts DTO, return. **No business logic in controllers.**
 - Domain never returns Contracts DTOs; mapping happens in Api/Application.
-- No Docker anywhere. MSSQL only. EF Core migration-based (see [`ef-core.md`](../standards/ef-core.md)).
+- Containers & database per `project-constraints.md`. EF Core migration-based (see [`ef-core.md`](../standards/ef-core.md)).
 
 ## Related
 

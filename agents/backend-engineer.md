@@ -36,7 +36,7 @@ Security & ops: [`../standards/security.md`](../standards/security.md) ·
 
 - Dependency direction: Domain → nothing; Application → Domain; Infrastructure →
   Application+Domain; Api → Application+Contracts (**not** Domain); Contracts = DTOs only.
-- **MSSQL only, EF Core migration-based.** No `EnsureCreated`, no manual DDL. **No Docker.**
+- **Database per `project-constraints.md`; EF Core migration-based.** No `EnsureCreated`, no manual DDL.
 - **DTOs only at the boundary — never bind EF entities.** FluentValidation on every request.
 - **Every response uses `ApiResponse<T>`** with `traceId`; errors never leak stack/SQL detail.
 - **Versioned routes** (`/api/v1/...`); OpenAPI documents every endpoint, model, error, auth.

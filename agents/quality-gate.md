@@ -15,7 +15,7 @@ You are the gatekeeper. Nothing gets proposed for push until you say the gate is
 4. `dotnet test` — all backend tests green (unit, integration, architecture).
 5. `npm run typecheck` — frontend types clean.
 6. `npm run build` — frontend builds.
-7. **SonarQube scanner** — run it (native, no Docker). Read the quality gate status
+7. **SonarQube scanner** — run it (runner per `project-constraints.md`). Read the quality gate status
    and issues.
 
 ## Enforcement

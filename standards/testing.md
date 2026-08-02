@@ -8,7 +8,7 @@ push.
 | Project | Scope |
 |---|---|
 | `{{ProjectName}}.UnitTests` | Domain rules & Application handlers in isolation (no DB, no I/O). Fast. |
-| `{{ProjectName}}.IntegrationTests` | Application + Infrastructure against a **real MSSQL** (local/Azure SQL). EF migrations applied. **No Docker.** |
+| `{{ProjectName}}.IntegrationTests` | Application + Infrastructure against a **real database** per the recorded stack (e.g. local/Azure SQL). EF migrations applied. |
 | `{{ProjectName}}.ArchitectureTests` | Enforces the Clean Architecture dependency rules (e.g. via NetArchTest). Fails the build if a layer imports the wrong direction. |
 
 - Frameworks: xUnit + FluentAssertions; NSubstitute/Moq for doubles.
@@ -33,7 +33,7 @@ push.
   there must be a test asserting the API never returns raw rates to those roles
   (BRD 3.1.4/3.1.5).
 
-## Commands (native — no Docker)
+## Commands
 
 ```bash
 dotnet test                    # all backend test projects

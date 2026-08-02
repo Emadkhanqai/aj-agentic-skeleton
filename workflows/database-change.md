@@ -2,7 +2,7 @@
 
 > **Model routing (do first):** classify the task and recommend a model — see [`../model-routing.md`](../model-routing.md). Schema change / EF migration → **Sonnet**. Warn the user if the current model is too expensive before continuing.
 
-Any schema change. MSSQL only, EF Core migration-based. Extends
+Any schema change. EF Core migration-based (database per `project-constraints.md`). Extends
 [`ef-core-migration.md`](ef-core-migration.md) with the 2026-grade rules.
 
 ## 1. Model the change

@@ -8,7 +8,7 @@ Focused SonarQube gate (assumes build/test already green; if not, run `/pre-push
 
 ## Steps
 1. Ensure the solution builds (`dotnet build`) so the scanner has fresh analysis input.
-2. Run the scanner natively (no Docker):
+2. Run the scanner (execution environment per `project-constraints.md`):
    ```bash
    dotnet sonarscanner begin /k:"<projectKey>" /d:sonar.host.url="<url>" /d:sonar.token="<token>"
    dotnet build --no-incremental

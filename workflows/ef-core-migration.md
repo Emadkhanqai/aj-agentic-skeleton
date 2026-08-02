@@ -2,7 +2,7 @@
 
 > **Model routing (do first):** classify the task and recommend a model — see [`../model-routing.md`](../model-routing.md). EF Core migration authoring → **Sonnet**. Warn the user if the current model is too expensive before continuing.
 
-Every schema change ships as a migration. **MSSQL only. No Docker. No `EnsureCreated`.**
+Every schema change ships as a migration. **Database per `project-constraints.md`. No `EnsureCreated`.**
 
 ## 1. Change the model
 - Edit Domain entities and their `IEntityTypeConfiguration<T>` in Infrastructure.

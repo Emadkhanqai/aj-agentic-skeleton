@@ -1,6 +1,6 @@
 # Standard: EF Core + MSSQL Migrations
 
-MSSQL only. Schema evolves **only** through EF Core migrations. Complements the existing
+Schema evolves **only** through EF Core migrations (database per the recorded stack). Complements the existing
 [`ef-core.md`](ef-core.md) and [`mssql.md`](mssql.md) with 2026-grade rules.
 
 ## Migrations

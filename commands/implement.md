@@ -21,7 +21,7 @@ Gateway.
   ownership authorization; price-list no-leak via role-scoped projection.
 - Schema change → EF migration (reviewed, business-intent name); money `decimal`; audit
   append-only + hash-chained.
-- **No Docker. MSSQL only. No `EnsureCreated`/manual DDL.**
+- **Honor `project-constraints.md` (containers, DB). No `EnsureCreated`/manual DDL.**
 
 ## Finish
 - `dotnet build && dotnet test`; `npm run typecheck && npm run build` where frontend changed.
