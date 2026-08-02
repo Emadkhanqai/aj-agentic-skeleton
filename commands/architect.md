@@ -72,8 +72,16 @@ In this exact order:
 2. **`project-constraints.md`** (repo root) — the org/project-specific rules from question 8,
    clearly labeled: *"These are project constraints, not universal standards."* (e.g. "MSSQL
    only", "No containers", "EU data residency".)
-3. **`CLAUDE.md`** (repo root) — generated, containing: project name + one-paragraph domain
-   summary; **recorded scope (frontend/backend/full-stack)**; the chosen playbook name(s) and
+3. **`CLAUDE.md`** (repo root) — generated, containing — FIRST, at the top — a prerequisite
+   block so teammates without the skill can bootstrap:
+
+```markdown
+   ## Prerequisite — install the standards skill (one time)
+   This project's standards live in the fullstack-standards skill. If you don't have it:
+   git clone https://github.com/Emadkhanqai/aj-agentic-skeleton.git ~/.claude/skills/fullstack-standards
+```
+
+   Then: project name + one-paragraph domain summary; **recorded scope (frontend/backend/full-stack)**; the chosen playbook name(s) and
    pointers; **recorded data stores (MSSQL / Cosmos / both / other)** so future sessions load
    the right conditional standards; the invariants pointer (`invariants.md` of this skill);
    `project-constraints.md` pointer; build/test/run commands; and the pre-push gate command.
